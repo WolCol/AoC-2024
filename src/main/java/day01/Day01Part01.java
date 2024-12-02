@@ -3,16 +3,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Day01Part01 {
-    public static void main(String[] args) {
-        String dateiPfad = "/Users/wolfs/Documents/GitHub/AoC-2024/src/main/resources/day01.txt";
-        List<String> zeilen = InputReader.readInputByLine(dateiPfad);
-        List<Integer> leftNums = new ArrayList<>();
-        List<Integer> rightNums = new ArrayList<>();
+    public static String dateiPfad = "main/resources/day01.txt";
+    public static List<String> zeilen = InputReader.readInputByLine(dateiPfad);
+    public static List<Integer> leftNums = new ArrayList<>();
+    public static List<Integer> rightNums = new ArrayList<>();
+    public static int counter = 0;
+    public static int[] result = new int[zeilen.size()];
+    public static int solution = 0;
 
-        /*for (int i = 0; i < zeilen.size(); i++) {
-            System.out.println("Zeile " + (i + 1) + ": " + zeilen.get(i));
-        }*/
-
+    public static void sortLists(){
         for (int i = 0; i < zeilen.size(); i++) {
             String zeile = zeilen.get(i);
             String[] parts = zeile.split("\\s+");
@@ -21,17 +20,21 @@ public class Day01Part01 {
         }
         Collections.sort(leftNums);
         Collections.sort(rightNums);
+    }
 
-        int counter = 0;
-        int[] result = new int[zeilen.size()];
-        int finalcalc = 0;
+    public static void calcSolution(){
         while (counter < leftNums.size() && counter <rightNums.size()) {
             //System.out.println(leftNums.get(counter) + " " + rightNums.get(counter));
             result[counter] = Math.abs(rightNums.get(counter) - leftNums.get(counter));
-            finalcalc += result[counter];
+            solution += result[counter];
             //System.out.println(result[counter]);
             counter++;
         }
-        System.out.println("The number is: "+finalcalc);
+    }
+
+    public static void main(String[] args) {
+        sortLists();
+        calcSolution();
+        System.out.println("The number is: "+solution);
     }
 }
