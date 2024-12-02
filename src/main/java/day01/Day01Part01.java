@@ -12,7 +12,7 @@ public class Day01Part01 {
     public static int solution = 0;
 
     public static void sortLists(){
-        for (int i = 0; i < zeilen.size(); i++) {
+        for(int i = 0; i < zeilen.size(); i++) {
             String zeile = zeilen.get(i);
             String[] parts = zeile.split("\\s+");
             leftNums.add(Integer.parseInt(parts[0]));
